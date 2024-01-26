@@ -18,3 +18,14 @@ yt-live-chat-membership-item-renderer #header-content-primary-column {
   margin: auto !important;
 }
 ```
+  > Superchat Event
+``` css
+yt-live-chat-paid-message-renderer #single-line * {
+  text-align: center !important;
+  margin: auto !important;
+}
+yt-live-chat-paid-message-renderer #single-line {
+  display: flex !important;
+  flex-direction: column !important;
+}
+```
