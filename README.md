@@ -6,10 +6,11 @@ Go to : https://rzytblc.netlify.app/
 
 **In This DOCS:**
   - [General Info](#youtube-livechat-dummmy-tester)
-  - [Tools That I Use](#youtube-livechat-dummmy-tester)
+  - [Tools That I Use](#tools-that-i-use)
   - [Youtube custom CSS Tips & Tricks](#youtube-livechat-dummmy-tester)
 
 # Tools That I Use
+
   - Designing : [Figma](https://www.figma.com)
   - Coding : [VSCode](https://code.visualstudio.com/)
   - Convert PNG -> Base64 : [Base64-image](https://www.base64-image.de/)
