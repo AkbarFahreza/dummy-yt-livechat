@@ -4,7 +4,18 @@ This is YouTube dummy chat to test your customize YouTube chat CSS for streaming
 
 Go to : https://rzytblc.netlify.app/
 
-# Youtube custom CSS Tips & Tricks
+**In This DOCS:**
+  - [General Info](#youtube-livechat-dummmy-tester)
+  - [Tools That I Use](#youtube-livechat-dummmy-tester)
+  - [Youtube custom CSS Tips & Tricks](#youtube-livechat-dummmy-tester)
+
+# Tools That I Use
+  - Designing : [Figma](https://www.figma.com)
+  - Coding : [VSCode](https://code.visualstudio.com/)
+  - Convert PNG -> Base64 : [Base64-image](https://www.base64-image.de/)
+  - Convert SVG -> Base64 : [yoksel.github.io/url-encoder](https://yoksel.github.io/url-encoder/)
+
+# Youtube Chat custom CSS Tips & Tricks
 
 Centering event text on header
   > Membership Event : Member Gift, Member Join, Member Achievement
