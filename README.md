@@ -7,7 +7,7 @@ Go to : https://rzytblc.netlify.app/
 **In This DOCS:**
   - [General Info](#youtube-livechat-dummmy-tester)
   - [Tools That I Use](#tools-that-i-use)
-  - [Youtube custom CSS Tips & Tricks](#youtube-livechat-dummmy-tester)
+  - [Youtube custom CSS Tips & Tricks](#youtube-chat-custom-css-tips--tricks)
 
 # Tools That I Use
 
