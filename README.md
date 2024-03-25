@@ -52,7 +52,9 @@ Iimportiingg fonts from loal (Installed Fonts)
   src: local("Next Bro"), local("Next Bro"),
     url("Next Bro.ttf") format("truetype");
 }
---FontFams: "Next Bro", sans-serif;
 
+:root{
+  --FontFams: "Next Bro", sans-serif;
+}
 
 ```
