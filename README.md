@@ -41,3 +41,18 @@ yt-live-chat-paid-message-renderer #single-line {
   flex-direction: column !important;
 }
 ```
+
+Iimportiingg fonts from loal (Installed Fonts)
+``` css
+/* Next Bro is example font*/
+
+@font-face {
+  font-family: "Next Bro";
+  src: url("Next Bro.ttf");
+  src: local("Next Bro"), local("Next Bro"),
+    url("Next Bro.ttf") format("truetype");
+}
+--FontFams: "Next Bro", sans-serif;
+
+
+```
