@@ -24,7 +24,9 @@
         overflow-y: scroll;
         overflow: hidden;
       }
-
+      yt-live-chat-text-message-renderer:hover {
+        background: unset !important;
+      }
       body.autoscroll {
         overflow-y: auto;
       }
@@ -108,8 +110,13 @@
           <div
             id="contents"
             class="style-scope yt-live-chat-item-list-renderer"
-            style="display: flex; flex-direction: column !important"
+            style="display: flex; flex-direction: column-reverse !important"
           >
+            <div
+              id="items"
+              class="style-scope yt-live-chat-item-list-renderer"
+              style="transform: translateY(-40px)"
+            ></div>
             <div
               class="renderBtn"
               style="
@@ -334,11 +341,6 @@
                 </div>
               </div>
             </div>
-            <div
-              id="items"
-              class="style-scope yt-live-chat-item-list-renderer"
-              style="transform: translateY(0px)"
-            ></div>
           </div>
         </yt-live-chat-item-list-renderer>
       </yt-live-chat-renderer>
@@ -393,6 +395,7 @@
       const rndmChat = Math.floor(Math.random() * functions.length);
       functions[rndmChat]();
     }
+
     function RandomSuppa() {
       const functions = [
         T1Suppa,
