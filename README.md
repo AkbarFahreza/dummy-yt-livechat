@@ -8,6 +8,7 @@ Go to : https://rzytblc.netlify.app/
   - [General Info](#youtube-livechat-dummmy-tester)
   - [Tools That I Use](#tools-that-i-use)
   - [Youtube custom CSS Tips & Tricks](#youtube-chat-custom-css-tips--tricks)
+  - [Update Logs](#update-logs)
 
 # Tools That I Use
 
@@ -58,3 +59,8 @@ Iimportiingg fonts from loal (Installed Fonts)
 }
 
 ```
+
+# Update Logs
+
+  - *1 May 2024* : 
+    - **superchat** Removing "show-only-header" and "is-v2-style" attribute, adding like button on superchat.
