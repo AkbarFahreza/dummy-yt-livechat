@@ -59,6 +59,13 @@ Iimportiingg fonts from loal (Installed Fonts)
 }
 
 ```
+Remove like button on the superchat 
+``` css
+#action-buttons{
+  display: none !important;
+}
+
+```
 
 # Update Logs
 
