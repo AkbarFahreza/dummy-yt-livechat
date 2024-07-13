@@ -3,18 +3,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
     <meta http-equiv="Cache-control" content="no-cache" />
     <title>Reza | Youtube LIve Chat</title>
-    <link rel="stylesheet" type="text/css" href="src/stail.css" />
-    <link rel="stylesheet" type="text/css" href="src/main.css" />
-    <link
-      rel="stylesheet"
-      href="src/fontawesome-free-6.4.0-web/css/all.min.css"
-    />
-    <link href="/dist/output.css" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-
+    <link rel="stylesheet" type="text/css" href="src/css/stail.css" />
+    <link rel="stylesheet" type="text/css" href="src/css/main.css" />
+    <script type="text/javascript" src="src/js/jQuery.js"></script>
+    <script src="src/js/components/Button.js"></script>
+    <script src="src/js/General.js"></script>
     <style>
       body {
         color: #000;
@@ -118,229 +111,14 @@
               style="transform: translateY(-40px)"
             ></div>
             <div
+              id="render-chat-buttons"
               class="renderBtn"
               style="
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
               "
-            >
-              <div id="buttons">
-                <div class="container">
-                  <button class="btn" onclick="RandomChats()">
-                    <i class="fa-solid fa-message TextShadow"></i>
-                  </button>
-                  <button
-                    id="button1"
-                    class="opt"
-                    onclick="toggleButtons('button1')"
-                  >
-                    >
-                  </button>
-                  <div id="toggleButtons1" class="toggle-buttons">
-                    <button class="button btnOn" onclick="ownerChat()">
-                      <i
-                        class="fa-solid fa-user TextShadow"
-                        style="color: Yellow"
-                      ></i>
-                    </button>
-                    <button class="button btnOn" onclick="modChat()">
-                      <i
-                        class="fa-solid fa-wrench TextShadow"
-                        style="color: #5e84f1"
-                      ></i>
-                    </button>
-
-                    <button class="button btnOn" onclick="memberChat()">
-                      <img
-                        style="width: 15px; height: 15px"
-                        src="https://res.cloudinary.com/dxcmt3zoc/image/upload/v1680602632/Frame_2_hzxp2b.png"
-                      />
-                    </button>
-                    <button class="button btnOn" onclick="viewerChat()">
-                      <i class="fa-solid fa-message TextShadow"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="container">
-                  <button
-                    class="btn"
-                    style="max-width: 40px; max-height: auto"
-                    onclick="RandomSuppa()"
-                  >
-                    <img
-                      style="width: 100%; height: 100%"
-                      src="/src/img/Subtract(1).svg"
-                    />
-                  </button>
-                  <button
-                    id="button2"
-                    class="opt"
-                    onclick="toggleButtons('button2')"
-                  >
-                    >
-                  </button>
-
-                  <div id="toggleButtons2" class="toggle-buttons">
-                    <button
-                      class="button btnOnSC"
-                      onclick="T1Suppa()"
-                      style="
-                        max-width: 26px;
-
-                        max-height: auto;
-                        background-color: rgba(30, 136, 229, 1);
-                      "
-                    >
-                      <img
-                        style="width: 100%; height: 100%"
-                        src="/src/img/Subtract(1).svg"
-                      />
-                    </button>
-                    <button
-                      class="button btnOnSC"
-                      onclick="T2Suppa()"
-                      style="
-                        max-width: 26px;
-
-                        max-height: auto;
-                        background-color: rgba(0, 229, 255, 1);
-                      "
-                    >
-                      <img
-                        style="width: 100%; height: 100%"
-                        src="/src/img/Subtract(1).svg"
-                      />
-                    </button>
-                    <button
-                      class="button btnOnSC"
-                      onclick="T3Suppa()"
-                      style="
-                        max-width: 26px;
-
-                        max-height: auto;
-                        background-color: rgba(29, 233, 182, 1);
-                      "
-                    >
-                      <img
-                        style="width: 100%; height: 100%"
-                        src="/src/img/Subtract(1).svg"
-                      />
-                    </button>
-                    <button
-                      class="button btnOnSC"
-                      onclick="T4Suppa()"
-                      style="
-                        max-width: 26px;
-
-                        max-height: auto;
-                        background-color: rgba(255, 202, 40, 1);
-                      "
-                    >
-                      <img
-                        style="width: 100%; height: 100%"
-                        src="/src/img/Subtract(1).svg"
-                      />
-                    </button>
-                    <button
-                      class="button btnOnSC"
-                      onclick="T5Suppa()"
-                      style="
-                        max-width: 26px;
-
-                        max-height: auto;
-                        background-color: rgba(245, 124, 0, 1);
-                      "
-                    >
-                      <img
-                        style="width: 100%; height: 100%"
-                        src="/src/img/Subtract(1).svg"
-                      />
-                    </button>
-                    <button
-                      class="button btnOnSC"
-                      onclick="T6Suppa()"
-                      style="
-                        max-width: 26px;
-
-                        max-height: auto;
-                        background-color: rgba(233, 30, 99, 1);
-                      "
-                    >
-                      <img
-                        style="width: 100%; height: 100%"
-                        src="/src/img/Subtract(1).svg"
-                      />
-                    </button>
-                    <button
-                      class="button btnOnSC"
-                      onclick="T7Suppa()"
-                      style="
-                        max-width: 26px;
-                        max-height: auto;
-                        background-color: rgba(230, 33, 23, 1);
-                      "
-                    >
-                      <img
-                        style="width: 100%; height: 100%"
-                        src="/src/img/Subtract(1).svg"
-                      />
-                    </button>
-                  </div>
-                </div>
-                <div class="container">
-                  <button class="btn" onclick="RandomMem()">
-                    <i
-                      class="fa-solid fa-star TextShadow"
-                      style="color: #29a13e"
-                    ></i>
-                  </button>
-                  <button
-                    id="button3"
-                    class="opt"
-                    onclick="toggleButtons('button3')"
-                  >
-                    >
-                  </button>
-                  <div id="toggleButtons3" class="toggle-buttons">
-                    <button class="button btnOn" onclick="MemberShip()">
-                      Member
-                    </button>
-                    <button class="button btnOn" onclick="renderGift()">
-                      Gift
-                    </button>
-                  </div>
-                </div>
-                <div class="container">
-                  <button
-                    class="btn"
-                    onclick="RenderSticker()"
-                    style="border-radius: 5px"
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      preserveAspectRatio="xMidYMid meet"
-                      focusable="false"
-                      style="
-                        pointer-events: none;
-                        display: block;
-                        width: auto;
-                        height: 20px;
-                      "
-                      class="style-scope yt-icon"
-                    >
-                      <g class="style-scope yt-icon">
-                        <path
-                          d="M13.67,12.41l2.01-1.74l-2.65-0.23L12,8l-1.03,2.44l-2.65,0.23l2.01,1.74L9.72,15L12,13.63L14.27,15L13.67,12.41z M2,5v14 h15h0.41L22,14.41V14V5H2z M17,14v3.99L16.99,18H3V6h18v7.99L20.99,14H17z"
-                          fill="#fff"
-                          class="style-scope yt-icon"
-                        ></path>
-                      </g>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
+            ></div>
           </div>
         </yt-live-chat-item-list-renderer>
       </yt-live-chat-renderer>
@@ -349,12 +127,12 @@
 
   <!-- <script src="../datas/sticker.js"></script> -->
   <!-- Render Chats -->
-  <script src="../datas/chats.js"></script>
+  <!-- <script src="../datas/chats.js"></script>
   <script src="../datas/Chats/owner.js"></script>
   <script src="../datas/Chats/Mods.js"></script>
   <script src="../datas/Chats/Member.js"></script>
   <script src="../datas/Chats/Viewer.js"></script>
-  <!-- Render Suppa -->
+  <-- Render Suppa 
   <script src="/datas/suppa/Tier1.js"></script>
   <script src="/datas/suppa/Tier2.js"></script>
   <script src="/datas/suppa/Tier3.js"></script>
@@ -365,68 +143,68 @@
 
   <script src="../datas/gift.js"></script>
   <script src="../datas/member.js"></script>
-  <script src="../datas/sticker.js"></script>
+  <script src="../datas/sticker.js"></script> -->
   <script>
-    function RandomMem() {
-      const functions = [MemberShip, renderGift];
-      const rndmChat = Math.floor(Math.random() * functions.length);
-      functions[rndmChat]();
-    }
-    function RandomChats() {
-      const functions = [
-        ownerChat,
-        modChat,
-        viewerChat,
-        viewerChat,
-        viewerChat,
-        memberChat,
-        memberChat,
-        viewerChat,
-        viewerChat,
-        viewerChat,
-        memberChat,
-        memberChat,
-        viewerChat,
-        viewerChat,
-        viewerChat,
-        memberChat,
-        memberChat,
-      ];
-      const rndmChat = Math.floor(Math.random() * functions.length);
-      functions[rndmChat]();
-    }
+    // function RandomMem() {
+    //   const functions = [MemberShip, renderGift];
+    //   const rndmChat = Math.floor(Math.random() * functions.length);
+    //   functions[rndmChat]();
+    // }
+    // function RandomChats() {
+    //   const functions = [
+    //     ownerChat,
+    //     modChat,
+    //     viewerChat,
+    //     viewerChat,
+    //     viewerChat,
+    //     memberChat,
+    //     memberChat,
+    //     viewerChat,
+    //     viewerChat,
+    //     viewerChat,
+    //     memberChat,
+    //     memberChat,
+    //     viewerChat,
+    //     viewerChat,
+    //     viewerChat,
+    //     memberChat,
+    //     memberChat,
+    //   ];
+    //   const rndmChat = Math.floor(Math.random() * functions.length);
+    //   functions[rndmChat]();
+    // }
 
-    function RandomSuppa() {
-      const functions = [
-        T1Suppa,
-        T2Suppa,
-        T3Suppa,
-        T4Suppa,
-        T5Suppa,
-        T6Suppa,
-        T7Suppa,
-      ];
-      const rndm = Math.floor(Math.random() * functions.length);
-      functions[rndm]();
-    }
-    function renderSuppa() {
-      const randomItem = suppa[Math.floor(Math.random() * suppa.length)];
+    // function RandomSuppa() {
+    //   const functions = [
+    //     T1Suppa,
+    //     T2Suppa,
+    //     T3Suppa,
+    //     T4Suppa,
+    //     T5Suppa,
+    //     T6Suppa,
+    //     T7Suppa,
+    //   ];
+    //   const rndm = Math.floor(Math.random() * functions.length);
+    //   functions[rndm]();
+    // }
+    // function renderSuppa() {
+    //   const randomItem = suppa[Math.floor(Math.random() * suppa.length)];
 
-      const newItem = document.createElement("div");
-      newItem.innerHTML = randomItem;
+    //   const newItem = document.createElement("div");
+    //   newItem.innerHTML = randomItem;
 
-      const container = document.getElementById("items");
-      container.appendChild(newItem);
-    }
-    function renderSticker() {
-      const randomItem = sticker[Math.floor(Math.random() * sticker.length)];
+    //   const container = document.getElementById("items");
+    //   container.appendChild(newItem);
+    // }
+    // function renderSticker() {
+    //   const randomItem = sticker[Math.floor(Math.random() * sticker.length)];
 
-      const newItem = document.createElement("div");
-      newItem.innerHTML = randomItem;
+    //   const newItem = document.createElement("div");
+    //   newItem.innerHTML = randomItem;
 
-      const container = document.getElementById("items");
-      container.appendChild(newItem);
-    }
+    //   const container = document.getElementById("items");
+    //   container.appendChild(newItem);
+    // }
     function toggleButtons(buttonId) {
       var button = document.getElementById(buttonId);
       var toggleButtons = button.nextElementSibling;
