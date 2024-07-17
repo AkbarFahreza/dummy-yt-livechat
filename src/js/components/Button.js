@@ -1,5 +1,7 @@
 function renderButtons() {
-  const viewerIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 12q-1.65 0-2.825-1.175T8 8t1.175-2.825T12 4t2.825 1.175T16 8t-1.175 2.825T12 12m-8 6v-.8q0-.85.438-1.562T5.6 14.55q1.55-.775 3.15-1.162T12 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2v.8q0 .825-.587 1.413T18 20H6q-.825 0-1.412-.587T4 18"/></svg>`;
+  const viewerIcon = ImageAssets().ViewerBtnIcon;
+  const ownerIcon = ImageAssets().OwnerBtnIcon;
+  const modIcon = ImageAssets().ModeratorBtnIcon;
   const buttonsHtml = `
         <div class="renderBtn" style="display: flex; flex-direction: row; justify-content: center;">
           <div id="buttons">
@@ -7,23 +9,21 @@ function renderButtons() {
             <div class="container">
               <!-- Button for Random Chats -->
               <button class="btn" onclick="RandomChats()">
-                <i class="fa-solid fa-message TextShadow"></i>
-              </button>
-             
+              ${viewerIcon}
+              </button>     
               <button id="button1" class="opt" onclick="toggleButtons('button1')">></button>
-              
               <div id="toggleButtons1" class="toggle-buttons">
-                <button class="button btnOn" onclick="ownerChat()">
-                 ${viewerIcon}
+                <button class="button btnOn" id="render-owner-chat">
+                 ${ownerIcon}
                 </button>
-                <button class="button btnOn" onclick="modChat()">
-                  <i class="fa-solid fa-wrench TextShadow" style="color: #5e84f1"></i>
+                <button class="button btnOn" id="render-moderator-chat">
+                ${modIcon}  
                 </button>
-                <button class="button btnOn" onclick="memberChat()">
+                <button class="button btnOn" id="render-member-chat">
                   <img style="width: 15px; height: 15px" src="https://res.cloudinary.com/dxcmt3zoc/image/upload/v1680602632/Frame_2_hzxp2b.png" />
                 </button>
                 <button class="button btnOn" id="render-viewer-chat">
-                  <i class="fa-solid fa-message TextShadow"></i>
+                  ${viewerIcon}
                 </button>
               </div>
             </div>

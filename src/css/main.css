@@ -80,6 +80,6 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--secondary2);
 }
-#timestamp{
+#timestamp {
   display: none !important;
 }
