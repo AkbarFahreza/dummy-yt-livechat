@@ -1,63 +1,78 @@
+function superChatButton(id, color) {
+  // superchat render button
+  //T stands for Tier, e.g. T1 = Tier1
+  const superchat = `<button class="button btnOnSC" id=${id} style="max-width: 26px; max-height: auto; background-color:${color};">
+                <img style="width: 100%; height: 100%" src="src/sc-icon.svg">
+              </button>`;
+  return superchat;
+}
+
 function renderButtons() {
   const viewerIcon = ImageAssets().ViewerBtnIcon;
   const ownerIcon = ImageAssets().OwnerBtnIcon;
   const modIcon = ImageAssets().ModeratorBtnIcon;
+  const memberIcon = ImageAssets().MemberBtnIcon;
+
+  // general chat render button
+  const viewerChat = `<button class="button btnOn" id="render-viewer-chat">${viewerIcon}</button>`;
+  const moderatorChat = `<button class="button btnOn" id="render-moderator-chat">${modIcon}</button>`;
+  const memberChat = `<button class="button btnOn" id="render-member-chat">${memberIcon}</button>`;
+  const ownerChat = `<button class="button btnOn" id="render-owner-chat">${ownerIcon}</button>`;
+
   const buttonsHtml = `
         <div class="renderBtn" style="display: flex; flex-direction: row; justify-content: center;">
           <div id="buttons">
-            <!-- Container 1 -->
+
             <div class="container">
-              <!-- Button for Random Chats -->
-              <button class="btn" onclick="RandomChats()">
+              <button class="btn" id="render-random-chat">
               ${viewerIcon}
               </button>     
               <button id="button1" class="opt" onclick="toggleButtons('button1')">></button>
               <div id="toggleButtons1" class="toggle-buttons">
-                <button class="button btnOn" id="render-owner-chat">
-                 ${ownerIcon}
-                </button>
-                <button class="button btnOn" id="render-moderator-chat">
-                ${modIcon}  
-                </button>
-                <button class="button btnOn" id="render-member-chat">
-                  <img style="width: 15px; height: 15px" src="https://res.cloudinary.com/dxcmt3zoc/image/upload/v1680602632/Frame_2_hzxp2b.png" />
-                </button>
-                <button class="button btnOn" id="render-viewer-chat">
-                  ${viewerIcon}
-                </button>
+              ${ownerChat}
+              ${moderatorChat}
+              ${memberChat}
+              ${viewerChat}
               </div>
             </div>
          
             <div class="container">
          
               <button class="btn" style="max-width: 40px; max-height: auto" onclick="RandomSuppa()">
-                <img style="width: 100%; height: 100%" src="/src/img/Subtract(1).svg" />
+                <img style="width: 100%; height: 100%" src="src/sc-icon.svg" />
               </button>
    
               <button id="button2" class="opt" onclick="toggleButtons('button2')">></button>
         
               <div id="toggleButtons2" class="toggle-buttons">
-                <button class="button btnOnSC" onclick="T1Suppa()" style="max-width: 26px; max-height: auto; background-color: rgba(30, 136, 229, 1);">
-                  <img style="width: 100%; height: 100%" src="/src/img/Subtract(1).svg" />
-                </button>
-                <button class="button btnOnSC" onclick="T2Suppa()" style="max-width: 26px; max-height: auto; background-color: rgba(0, 229, 255, 1);">
-                  <img style="width: 100%; height: 100%" src="/src/img/Subtract(1).svg" />
-                </button>
-                <button class="button btnOnSC" onclick="T3Suppa()" style="max-width: 26px; max-height: auto; background-color: rgba(29, 233, 182, 1);">
-                  <img style="width: 100%; height: 100%" src="/src/img/Subtract(1).svg" />
-                </button>
-                <button class="button btnOnSC" onclick="T4Suppa()" style="max-width: 26px; max-height: auto; background-color: rgba(255, 202, 40, 1);">
-                  <img style="width: 100%; height: 100%" src="/src/img/Subtract(1).svg" />
-                </button>
-                <button class="button btnOnSC" onclick="T5Suppa()" style="max-width: 26px; max-height: auto; background-color: rgba(245, 124, 0, 1);">
-                  <img style="width: 100%; height: 100%" src="/src/img/Subtract(1).svg" />
-                </button>
-                <button class="button btnOnSC" onclick="T6Suppa()" style="max-width: 26px; max-height: auto; background-color: rgba(233, 30, 99, 1);">
-                  <img style="width: 100%; height: 100%" src="/src/img/Subtract(1).svg" />
-                </button>
-                <button class="button btnOnSC" onclick="T7Suppa()" style="max-width: 26px; max-height: auto; background-color: rgba(230, 33, 23, 1);">
-                  <img style="width: 100%; height: 100%" src="/src/img/Subtract(1).svg" />
-                </button>
+              ${superChatButton(
+                "render-tier1-superchat",
+                "rgba(30, 136, 229, 1)"
+              )}
+              ${superChatButton(
+                "render-tier2-superchat",
+                "rgba(0, 229, 255, 1)"
+              )}
+              ${superChatButton(
+                "render-tier3-superchat",
+                "rgba(29, 233, 182, 1)"
+              )}
+              ${superChatButton(
+                "render-tier4-superchat",
+                "rgba(255, 202, 40, 1)"
+              )}
+              ${superChatButton(
+                "render-tier5-superchat",
+                "rgba(245, 124, 0, 1)"
+              )}
+              ${superChatButton(
+                "render-tier6-superchat",
+                "rgba(233, 30, 99, 1)"
+              )}
+              ${superChatButton(
+                "render-tier7-superchat",
+                "rgba(230, 33, 23, 1)"
+              )}
               </div>
             </div>
             <!-- Container 3 -->
