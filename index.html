@@ -7,10 +7,13 @@
     <link rel="stylesheet" type="text/css" href="src/css/main.css" />
     <!-- components -->
     <script src="src/js/components/RenderButton.js"></script>
-    <script src="src/js/components/ImageAssets.js"></script>
     <!-- Data and Assets -->
+    <script src="src/js/components/ImageAssets.js"></script>
     <script src="src/js/ChatsData/GeneralChats.js"></script>
     <script src="src/js/ChatsData/SuperchatEvent.js"></script>
+    <script src="src/js/ChatsData/MembershipEvent.js"></script>
+    <script src="src/js/ChatsData/MembergiftEvent.js"></script>
+    <script src="src/js/ChatsData/SuperSticker.js"></script>
     <!-- Core Functions -->
     <script type="text/javascript" src="src/js/jQuery.js"></script>
     <script src="src/js/RenderChats.js"></script>
@@ -132,66 +135,6 @@
 
 
   <script>
-    // function RandomMem() {
-    //   const functions = [MemberShip, renderGift];
-    //   const rndmChat = Math.floor(Math.random() * functions.length);
-    //   functions[rndmChat]();
-    // }
-    // function RandomChats() {
-    //   const functions = [
-    //     ownerChat,
-    //     modChat,
-    //     viewerChat,
-    //     viewerChat,
-    //     viewerChat,
-    //     memberChat,
-    //     memberChat,
-    //     viewerChat,
-    //     viewerChat,
-    //     viewerChat,
-    //     memberChat,
-    //     memberChat,
-    //     viewerChat,
-    //     viewerChat,
-    //     viewerChat,
-    //     memberChat,
-    //     memberChat,
-    //   ];
-    //   const rndmChat = Math.floor(Math.random() * functions.length);
-    //   functions[rndmChat]();
-    // }
-
-    // function RandomSuppa() {
-    //   const functions = [
-    //     T1Suppa,
-    //     T2Suppa,
-    //     T3Suppa,
-    //     T4Suppa,
-    //     T5Suppa,
-    //     T6Suppa,
-    //     T7Suppa,
-    //   ];
-    //   const rndm = Math.floor(Math.random() * functions.length);
-    //   functions[rndm]();
-    // }
-    // function renderSuppa() {
-    //   const randomItem = suppa[Math.floor(Math.random() * suppa.length)];
-
-    //   const newItem = document.createElement("div");
-    //   newItem.innerHTML = randomItem;
-
-    //   const container = document.getElementById("items");
-    //   container.appendChild(newItem);
-    // }
-    // function renderSticker() {
-    //   const randomItem = sticker[Math.floor(Math.random() * sticker.length)];
-
-    //   const newItem = document.createElement("div");
-    //   newItem.innerHTML = randomItem;
-
-    //   const container = document.getElementById("items");
-    //   container.appendChild(newItem);
-    // }
     function toggleButtons(buttonId) {
       var button = document.getElementById(buttonId);
       var toggleButtons = button.nextElementSibling;

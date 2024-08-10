@@ -38,7 +38,7 @@ function renderButtons() {
          
             <div class="container">
          
-              <button class="btn" style="max-width: 40px; max-height: auto" onclick="RandomSuppa()">
+              <button class="btn" style="max-width: 40px; max-height: auto" id="render-random-suppa">
                 <img style="width: 100%; height: 100%" src="src/sc-icon.svg" />
               </button>
    
@@ -75,23 +75,17 @@ function renderButtons() {
               )}
               </div>
             </div>
-            <!-- Container 3 -->
             <div class="container">
-              <!-- Button for Random Mem -->
-              <button class="btn" onclick="RandomMem()">
-                <i class="fa-solid fa-star TextShadow" style="color: #29a13e"></i>
+              <button class="btn" id="render-random-memberevent">
+               <img style="width: 18px; height: 18px" src="src/membership-icon.svg" />
               </button>
-              <!-- Toggle Button 3 -->
               <button id="button3" class="opt" onclick="toggleButtons('button3')">></button>
-              <!-- Toggle Buttons Container 3 -->
               <div id="toggleButtons3" class="toggle-buttons">
-                <button class="button btnOn" onclick="MemberShip()">Member</button>
-                <button class="button btnOn" onclick="renderGift()">Gift</button>
+                <button class="button btnOn" id="render-membership">Member</button>
+                <button class="button btnOn" id="render-membergift">Gift</button>
               </div>
             </div>
-            <!-- Container 4 -->
             <div class="container">
-              <!-- Button for Render Sticker -->
               <button class="btn" onclick="RenderSticker()" style="border-radius: 5px;">
                 <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: auto; height: 20px;" class="style-scope yt-icon">
                   <g class="style-scope yt-icon">

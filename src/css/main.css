@@ -1,39 +1,43 @@
 :root {
-  --main: #7d40ff;
-  --main2: #37089c;
+  --main: #8558ff;
+  --main2: #552ac9;
   --secondary: #ff40b3;
   --secondary2: #880353;
 }
+
 #buttons {
   display: flex;
   flex-direction: row;
 }
+
 .btn {
   border: none !important;
-  padding: 10px;
+  padding: 7PX 10px;
   color: #fff;
-  border-radius: 7px 0px 0px 7px;
+  border-radius: 4px 0px 0px 4px;
   background-color: var(--main);
 }
 
 .btn:hover {
   background-color: var(--main2);
 }
+
 .btnOnSC,
 .btnOn {
   border: none !important;
-  padding: 10px;
   color: #fff;
-  border-radius: 7px;
+  border-radius: 4px;
   background-color: var(--secondary);
   height: 100%;
   /* width: 40px; */
   font-weight: 500;
   margin-right: 5px;
 }
+
 .btnOnSC {
   padding: 10px 5px;
 }
+
 .TextShadow {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000;
@@ -43,16 +47,19 @@
 .btnOn:hover {
   /* background-color: var(--secondary2); */
   opacity: 80%;
+  transition: all 0.2s ease-in-out;
 }
+
 .opt {
   border: none;
   padding: 7px;
   margin-right: 5px;
-  border-radius: 0px 7px 7px 0px;
+  border-radius: 0px 4px 4px 0px;
   background-color: var(--secondary);
 }
 
 .opt:hover {
+  transition: all 0.2s ease-in-out;
   background-color: var(--secondary2);
 }
 
@@ -60,11 +67,13 @@
   display: flex;
   flex-direction: row;
 }
+
 .toggle-buttons {
   display: flex;
   flex-direction: row;
   max-height: 40px;
 }
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -80,6 +89,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--secondary2);
 }
+
 #timestamp {
   display: none !important;
 }

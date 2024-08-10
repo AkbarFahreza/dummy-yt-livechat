@@ -118,6 +118,24 @@ $(document).ready(function () {
     element.attr("whole-message-clickable", "");
     element.attr("allow-animation", "");
   }
+  // Render Random Suppa
+  function renderRandomSuppa() {
+    const allChats = [
+      renderSuperchatTier1,
+      renderSuperchatTier2,
+      renderSuperchatTier3,
+      renderSuperchatTier4,
+      renderSuperchatTier5,
+      renderSuperchatTier6,
+      renderSuperchatTier7,
+    ];
+
+    const randomFunction =
+      allChats[Math.floor(Math.random() * allChats.length)];
+    const randomChat = randomFunction().randomItem;
+  }
+  $("#render-random-suppa").on("click", renderRandomSuppa);
+
   // Tier1
   function renderSuperchatTier1() {
     const SuppaData = SuperchatEventData(
@@ -136,6 +154,7 @@ $(document).ready(function () {
     );
     newItem.html(SuppaData[0]);
     $("#items").append(newItem);
+    return { item: SuppaData[0] };
   }
   $("#render-tier1-superchat").on("click", renderSuperchatTier1);
 
@@ -158,6 +177,7 @@ $(document).ready(function () {
     );
     newItem.html(randomItem);
     $("#items").append(newItem);
+    return { randomItem };
   }
   $("#render-tier2-superchat").on("click", renderSuperchatTier2);
   // Tier3
@@ -179,6 +199,7 @@ $(document).ready(function () {
     );
     newItem.html(randomItem);
     $("#items").append(newItem);
+    return { randomItem };
   }
   $("#render-tier3-superchat").on("click", renderSuperchatTier3);
   // Tier4
@@ -199,7 +220,9 @@ $(document).ready(function () {
       "--yt-live-chat-paid-message-primary-color: rgba(255,202,40,1); --yt-live-chat-paid-message-secondary-color: rgba(255,179,0,1); --yt-live-chat-paid-message-header-color: rgba(0,0,0,0.8745098039215686); --yt-live-chat-paid-message-timestamp-color: rgba(0,0,0,0.5019607843137255); --yt-live-chat-paid-message-color: rgba(0,0,0,0.8745098039215686); --yt-live-chat-disable-highlight-message-author-name-color: rgba(0,0,0,0.5411764705882353);"
     );
     newItem.html(randomItem);
+
     $("#items").append(newItem);
+    return { randomItem };
   }
   $("#render-tier4-superchat").on("click", renderSuperchatTier4);
   // Tier5
@@ -221,6 +244,7 @@ $(document).ready(function () {
     );
     newItem.html(randomItem);
     $("#items").append(newItem);
+    return { randomItem };
   }
   $("#render-tier5-superchat").on("click", renderSuperchatTier5);
   // Tier6
@@ -242,6 +266,7 @@ $(document).ready(function () {
     );
     newItem.html(randomItem);
     $("#items").append(newItem);
+    return { randomItem };
   }
   $("#render-tier6-superchat").on("click", renderSuperchatTier6);
   // Tier7
@@ -263,6 +288,81 @@ $(document).ready(function () {
     );
     newItem.html(randomItem);
     $("#items").append(newItem);
+    return { randomItem };
   }
   $("#render-tier7-superchat").on("click", renderSuperchatTier7);
+
+  //===============================================================================
+  //Membership Event
+  //===============================================================================
+  function RenderMembership() {
+    const MembershipData = MembershipEventData(
+      ProfilePicture,
+      MemberBadge
+    ).MembershipData;
+    const randomItem =
+      MembershipData[Math.floor(Math.random() * MembershipData.length)];
+    const newItem = $(
+      "<yt-live-chat-membership-item-renderer></yt-live-chat-membership-item-renderer>"
+    );
+    // if selected membership data doesn't have message (header only), add show-only-header
+    const isHeaderOnly =
+      randomItem === MembershipData[0]
+        ? "show-only-header"
+        : "has-primary-text";
+    newItem.attr("class", "style-scope yt-live-chat-item-list-renderer");
+    newItem.attr(isHeaderOnly, "");
+    newItem.attr("id", "123");
+    newItem.html(randomItem);
+    $("#items").append(newItem);
+    return { randomItem };
+  }
+  $("#render-membership").on("click", RenderMembership);
+
+  //===============================================================================
+  //Membergift Event
+  //===============================================================================
+  function RenderMembergift() {
+    let GiftTotal = 3;
+
+    const MembergiftData = MembergiftEventData(
+      ProfilePicture,
+      MemberBadge,
+      GiftTotal
+    ).MembergiftData;
+    const GiftRedemptionData = MembergiftEventData(
+      ProfilePicture,
+      MemberBadge
+    ).GiftRedemptionData;
+
+    const newItem = $(
+      "<ytd-sponsorships-live-chat-gift-purchase-announcement-renderer></ytd-sponsorships-live-chat-gift-purchase-announcement-renderer>"
+    );
+
+    newItem.attr("class", "style-scope yt-live-chat-item-list-renderer");
+    newItem.attr("id", "123");
+    newItem.html(MembergiftData);
+    $("#items").append(newItem);
+
+    // render the gift redemption event
+    setTimeout(() => {
+      for (let i = 0; i < GiftTotal; i++) {
+        setTimeout(() => {
+          $("#items").append(GiftRedemptionData);
+        }, i * 100);
+      }
+    }, 100);
+    return { MembergiftData };
+  }
+  $("#render-membergift").on("click", RenderMembergift);
+
+  // render random membership event
+  $("#render-random-memberevent").on("click", () => {
+    const random = Math.floor(Math.random() * 3);
+    if (random === 0) {
+      RenderMembership();
+    } else if (random === 1) {
+      RenderMembergift();
+    }
+  });
 });
