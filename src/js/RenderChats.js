@@ -142,7 +142,7 @@ $(document).ready(function () {
       ProfilePicture,
       MemberBadge,
       "$1,00"
-    ).TierData;
+    ).suppaData;
     const newItem = $(
       "<yt-live-chat-paid-message-renderer></yt-live-chat-paid-message-renderer>"
     );
@@ -164,7 +164,7 @@ $(document).ready(function () {
       ProfilePicture,
       MemberBadge,
       "Rp20,000"
-    ).TierData;
+    ).suppaData;
     const randomItem = SuppaData[Math.floor(Math.random() * SuppaData.length)];
     const newItem = $(
       "<yt-live-chat-paid-message-renderer></yt-live-chat-paid-message-renderer>"
@@ -186,7 +186,7 @@ $(document).ready(function () {
       ProfilePicture,
       MemberBadge,
       "$10"
-    ).TierData;
+    ).suppaData;
     const randomItem = SuppaData[Math.floor(Math.random() * SuppaData.length)];
     const newItem = $(
       "<yt-live-chat-paid-message-renderer></yt-live-chat-paid-message-renderer>"
@@ -208,7 +208,7 @@ $(document).ready(function () {
       ProfilePicture,
       MemberBadge,
       "Rp100,000"
-    ).TierData;
+    ).suppaData;
     const randomItem = SuppaData[Math.floor(Math.random() * SuppaData.length)];
     const newItem = $(
       "<yt-live-chat-paid-message-renderer></yt-live-chat-paid-message-renderer>"
@@ -231,7 +231,7 @@ $(document).ready(function () {
       ProfilePicture,
       MemberBadge,
       "$20"
-    ).TierData;
+    ).suppaData;
     const randomItem = SuppaData[Math.floor(Math.random() * SuppaData.length)];
     const newItem = $(
       "<yt-live-chat-paid-message-renderer></yt-live-chat-paid-message-renderer>"
@@ -253,7 +253,7 @@ $(document).ready(function () {
       ProfilePicture,
       MemberBadge,
       "$50"
-    ).TierData;
+    ).suppaData;
     const randomItem = SuppaData[Math.floor(Math.random() * SuppaData.length)];
     const newItem = $(
       "<yt-live-chat-paid-message-renderer></yt-live-chat-paid-message-renderer>"
@@ -275,7 +275,7 @@ $(document).ready(function () {
       ProfilePicture,
       MemberBadge,
       "$100"
-    ).TierData;
+    ).suppaData;
     const randomItem = SuppaData[Math.floor(Math.random() * SuppaData.length)];
     const newItem = $(
       "<yt-live-chat-paid-message-renderer></yt-live-chat-paid-message-renderer>"
@@ -365,4 +365,19 @@ $(document).ready(function () {
       RenderMembergift();
     }
   });
+
+  //===============================================================================
+  //Supersticker Event
+  //===============================================================================
+
+  function RenderSupersticker() {
+    const SuperstickerData = superStickerData(
+      ProfilePicture,
+      MemberBadge
+    ).superStickerItems;
+    const newItem =
+      SuperstickerData[Math.floor(Math.random() * SuperstickerData.length)];
+    $("#items").append(newItem);
+  }
+  $("#render-supersticker").on("click", RenderSupersticker);
 });

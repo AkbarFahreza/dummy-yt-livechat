@@ -29,13 +29,12 @@
   border-radius: 4px;
   background-color: var(--secondary);
   height: 100%;
-  /* width: 40px; */
   font-weight: 500;
   margin-right: 5px;
 }
 
 .btnOnSC {
-  padding: 10px 5px;
+  padding: 0px 3px;
 }
 
 .TextShadow {
@@ -45,14 +44,13 @@
 
 .btnOnSC:hover,
 .btnOn:hover {
-  /* background-color: var(--secondary2); */
   opacity: 80%;
   transition: all 0.2s ease-in-out;
 }
 
 .opt {
   border: none;
-  padding: 7px;
+  padding: 7px 10px;
   margin-right: 5px;
   border-radius: 0px 4px 4px 0px;
   background-color: var(--secondary);

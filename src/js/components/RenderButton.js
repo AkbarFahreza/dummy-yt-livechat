@@ -86,7 +86,7 @@ function renderButtons() {
               </div>
             </div>
             <div class="container">
-              <button class="btn" onclick="RenderSticker()" style="border-radius: 5px;">
+              <button class="btn" id="render-supersticker" style="border-radius: 5px;">
                 <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: auto; height: 20px;" class="style-scope yt-icon">
                   <g class="style-scope yt-icon">
                     <path d="M13.67,12.41l2.01-1.74l-2.65-0.23L12,8l-1.03,2.44l-2.65,0.23l2.01,1.74L9.72,15L12,13.63L14.27,15L13.67,12.41z M2,5v14 h15h0.41L22,14.41V14V5H2z M17,14v3.99L16.99,18H3V6h18v7.99L20.99,14H17z" fill="#fff" class="style-scope yt-icon"></path>
