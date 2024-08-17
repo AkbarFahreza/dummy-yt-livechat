@@ -66,9 +66,7 @@ $(document).ready(function () {
     );
 
     chatAttributes(newItem);
-    newItem.attr("has-inline-action-buttons", "3");
-    newItem.attr("author-is-owner", "");
-    newItem.attr("author-type", "owner");
+    newItem.attr("author-type", "moderator")
     newItem.html(randomItem);
     $("#items").append(newItem);
     return { randomItem };
@@ -101,7 +99,8 @@ $(document).ready(function () {
     );
 
     chatAttributes(newItem);
-    newItem.attr("author-type", "member");
+    newItem.attr("author-is-owner", "");
+    newItem.attr("author-type", "owner");
     newItem.html(randomItem);
     $("#items").append(newItem);
     return { randomItem };
