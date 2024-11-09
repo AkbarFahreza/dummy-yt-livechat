@@ -65,6 +65,20 @@ Remove like button on the superchat
 #action-buttons{
   display: none !important;
 }
+```
+Special code
+``` css
+ytd-sponsorships-live-chat-header-renderer #primary-text,
+yt-live-chat-membership-item-renderer #header-primary-text,
+yt-live-chat-membership-item-renderer #header-subtext {
+    font-family: var(--FontFams) !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+}
+
+yt-live-chat-membership-item-renderer:not([show-only-header]) #header-subtext {
+    display: none !important;
+}
 
 ```
 
