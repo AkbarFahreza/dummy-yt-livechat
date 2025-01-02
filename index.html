@@ -94,7 +94,41 @@
         color: inherit !important;
       }
     </style>
-  </head>
+  
+  <style>
+    #css-editor-wrapper {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 400px;
+        height: 100vh;
+        background-color: #f0f0f0;
+        z-index: 1000;
+        padding: 10px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+    #custom-css-input {
+        flex-grow: 1;
+        width: 100%;
+        height: calc(100% - 50px);
+        font-family: monospace;
+        margin-bottom: 10px;
+    }
+    #apply-css-btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    #custom-style-output {
+        display: none;
+    }
+</style>
+</head>
 
   <body class="general-rz-class">
     <yt-live-chat-app>
@@ -131,6 +165,16 @@
         </yt-live-chat-item-list-renderer>
       </yt-live-chat-renderer>
     </yt-live-chat-app>
+    <div id="css-editor-wrapper">
+        <textarea id="custom-css-input" placeholder="Enter your custom CSS here">
+/* Example custom CSS */
+yt-live-chat-text-message-renderer {
+    background-color: rgba(0,0,0,0.1);
+}
+        </textarea>
+        <button id="apply-css-btn">Apply CSS</button>
+    </div>
+    <style id="custom-style-output"></style>
   </body>
 
 
@@ -147,5 +191,21 @@
         }
       }
     }
+
+
+
+    document.getElementById('apply-css-btn').addEventListener('click', function() {
+        const customCssInput = document.getElementById('custom-css-input');
+        const customStyleOutput = document.getElementById('custom-style-output');
+
+        customStyleOutput.innerHTML = '';
+
+        try {
+            customStyleOutput.innerHTML = customCssInput.value;
+        } catch (error) {
+            console.error('Error applying custom CSS:', error);
+            alert('Invalid CSS. Please check your syntax.');
+        }
+    });
   </script>
 </html>
