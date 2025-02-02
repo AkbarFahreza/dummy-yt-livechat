@@ -5,6 +5,29 @@
     <title>Reza | Youtube LIve Chat</title>
     <link rel="stylesheet" type="text/css" href="src/css/yt-original.css" />
     <link rel="stylesheet" type="text/css" href="src/css/main.css" />
+
+    <!-- Code mirror for css editor -->
+    <!-- CodeMirror CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css"
+    />
+    <!-- Theme CSS (optional, choose your favorite theme) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css"
+    />
+    <!-- Linting CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/lint/lint.min.css"
+    />
+    <!-- Autocomplete CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/show-hint.min.css"
+    />
+
     <!-- components and Assets -->
     <script src="src/js/components/RenderButton.js"></script>
     <script src="src/js/components/ImageAssets.js"></script>
@@ -98,15 +121,17 @@
     </style>
 
     <style>
+      .CodeMirror {
+        border: 1px solid #ccc;
+        height: calc(100vh - 35px);
+        max-height: 100vh;
+        width: 500px !important;
+        font-size: 14px !important;
+        flex-grow: 1 !important;
+      }
       #css-editor-wrapper {
-        width: 900px;
-        height: 100vh;
-        background-color: #3d4455;
-        z-index: 1000;
-        padding: 10px;
-        box-sizing: border-box;
         display: none;
-        flex-direction: column;
+        flex-direction: column !important;
       }
       #custom-css-input {
         background-color: #3d4455;
@@ -167,20 +192,24 @@
       </yt-live-chat-renderer>
     </yt-live-chat-app>
     <div id="css-editor-wrapper">
-      <textarea id="custom-css-input" placeholder="Enter your custom CSS here">
-/* Example custom CSS */
-yt-live-chat-text-message-renderer {
-    background-color: rgba(0,0,0,0.1);
-}
-        </textarea
-      >
+      <textarea id="css-editor"></textarea>
       <button id="apply-css-btn">Apply CSS</button>
     </div>
     <style id="custom-style-output"></style>
   </body>
 
   <script>
-    function toggleButtons(buttonId) {
+    /*************  ✨ Codeium Command ⭐  *************/
+    /**
+     * Toggle the display of the buttons with the class "toggle-buttons"
+     * that are next element siblings of the button with the given id.
+     * All other buttons with the class "toggle-buttons" will be hidden.
+     * @param {string} buttonId The id of the button.
+     */
+
+    /******  072af91a-fd57-42d4-a161-c601a63d89a4  *******/ function toggleButtons(
+      buttonId
+    ) {
       var button = document.getElementById(buttonId);
       var toggleButtons = button.nextElementSibling;
       toggleButtons.style.display =
@@ -196,19 +225,68 @@ yt-live-chat-text-message-renderer {
     document
       .getElementById("apply-css-btn")
       .addEventListener("click", function () {
-        const customCssInput = document.getElementById("custom-css-input");
+        const editorContent = editor.getValue(); // Get the content from the CodeMirror editor
         const customStyleOutput = document.getElementById(
           "custom-style-output"
         );
 
+        // Clear the existing styles
         customStyleOutput.innerHTML = "";
 
         try {
-          customStyleOutput.innerHTML = customCssInput.value;
+          // Apply the new CSS to the <style> element
+          customStyleOutput.innerHTML = editorContent;
         } catch (error) {
           console.error("Error applying custom CSS:", error);
           alert("Invalid CSS. Please check your syntax.");
         }
       });
+
+    // code mirror adds on
+
+    // Initialize CodeMirror
+  </script>
+  <!-- CodeMirror JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+  <!-- CSS Mode -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/css/css.min.js"></script>
+  <!-- Linting Addon -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/lint/lint.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/lint/css-lint.min.js"></script>
+  <!-- Autocomplete Addon -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/show-hint.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/css-hint.min.js"></script>
+  <!-- Search and Replace Addon -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/search/search.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/search/searchcursor.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/dialog/dialog.min.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/dialog/dialog.min.css"
+  />
+  <!-- Auto Close Brackets Addon -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+  <!-- Comment Addon -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/comment/comment.min.js"></script>
+
+  <script>
+    var editor = CodeMirror.fromTextArea(
+      document.getElementById("css-editor"),
+      {
+        mode: "css", // Set the mode to CSS
+        lineNumbers: true, // Show line numbers
+        theme: "monokai", // Set the theme (you can change this to 'default', 'material', etc.)
+        autoCloseBrackets: true, // Automatically close brackets
+        matchBrackets: true, // Highlight matching brackets
+        lineWrapping: true, // Enable line wrapping
+        lint: true, // Enable linting (requires css-lint.js)
+        gutters: ["CodeMirror-lint-markers"], // Add linting gutters
+        extraKeys: {
+          "Ctrl-Space": "autocomplete", // Enable autocomplete with Ctrl+Space
+          "Ctrl-F": "findPersistent", // Enable search with Ctrl+F
+          "Ctrl-/": "toggleComment", // Enable comment/uncomment with Ctrl+/
+        },
+      }
+    );
   </script>
 </html>
