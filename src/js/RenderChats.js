@@ -66,7 +66,7 @@ $(document).ready(function () {
     );
 
     chatAttributes(newItem);
-    newItem.attr("author-type", "moderator")
+    newItem.attr("author-type", "moderator");
     newItem.html(randomItem);
     $("#items").append(newItem);
     return { randomItem };
@@ -379,4 +379,13 @@ $(document).ready(function () {
     $("#items").append(newItem);
   }
   $("#render-supersticker").on("click", RenderSupersticker);
+  //===============================================================================
+  //Toggle show editor
+  //===============================================================================
+
+  function toggleEditor() {
+    const $editor = $("#css-editor-wrapper");
+    $editor.css("display", $editor.css("display") === "none" ? "flex" : "none");
+  }
+  $("#toggle-editor").on("click", toggleEditor);
 });
