@@ -86,3 +86,5 @@ yt-live-chat-membership-item-renderer:not([show-only-header]) #header-subtext {
 
   - *1 May 2024* : 
     - **superchat** Removing "show-only-header" and "is-v2-style" attribute, adding like button on superchat.
+  - *2 February 2025* : 
+    - **Main page** Added CSS Editor for on-site editing.
