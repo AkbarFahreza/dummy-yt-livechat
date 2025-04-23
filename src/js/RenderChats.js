@@ -1,6 +1,6 @@
 $(document).ready(function () {
   renderButtons();
-
+  // console.log(JSON.stringify(localStorage));
   const ProfilePicture = ImageAssets().profilePicture;
   const MemberBadge = ImageAssets().MemberBadge;
 
@@ -388,4 +388,207 @@ $(document).ready(function () {
     $editor.css("display", $editor.css("display") === "none" ? "flex" : "none");
   }
   $("#toggle-editor").on("click", toggleEditor);
+
+  //===============================================================================
+  //configuration Panel
+  //===============================================================================
+  const configGroups = {
+    "General Chat": {
+      viewer: 4,
+      moderator: 3,
+      member: 3,
+      owner: 4,
+    },
+    Superchat: {
+      Superchat: 3,
+      SuperSticker: 2,
+    },
+  };
+
+  function toggleConfig() {
+    let $panel = $("#config-panel");
+
+    if ($panel.length === 0) {
+      $panel = $(`
+        <div id="config-panel" style="display: flex;">
+          <div id="config-wrapper">
+          <p>Paste template configuration</p>
+          <textarea id="jsonInput" rows="5" cols="5" placeholder="Paste JSON here"></textarea>
+          <div style="display:flex; flex-direction: row; gap: 5px;">
+            <button onclick="handleImport()" class="btn">Import JSON</button>
+            <a href="https://github.com/AkbarFahreza/dummy-yt-livechat?tab=readme-ov-file#json-template" class="btnOn">Need a guide?</a>
+          </div>
+            <h3 style="font-size: 15px; font-weight: 600">Author Namee Configuration</h3>
+            <div id="group-container"></div>
+            <div id="config-btn">
+              <button id="save-btn" class="btn">Save</button>
+              <button id="reset-btn" class="btn dismiss-btn">Reset</button>
+            </div>
+          </div>
+        </div>
+
+      `);
+
+      $("body").append($panel);
+      generateInputs();
+      initConfigHandlers();
+    }
+
+    $panel.toggle();
+  }
+
+  $("#open-config").on("click", toggleConfig);
+
+  function generateInputs() {
+    const container = $("#group-container");
+    container.empty();
+
+    for (const [groupName, roles] of Object.entries(configGroups)) {
+      const groupId = groupName.toLowerCase().replace(/\s+/g, "-");
+
+      const group = $(`
+        <div class="group-section">
+          <div class="group-header" data-target="#${groupId}-content">
+            <h4>${groupName}</h4>
+            <span class="toggle-icon">></span>
+          </div>
+          <div class="group-content" id="${groupId}-content"></div>
+        </div>
+      `);
+
+      const groupContent = group.find(".group-content");
+
+      for (const [type, count] of Object.entries(roles)) {
+        const roleId = `${groupId}-${type}`;
+
+        const roleSection = $(`
+          <div class="role-section">
+            <div class="role-header" data-target="#${roleId}-content">
+              <h5>${type.charAt(0).toUpperCase() + type.slice(1)}</h5>
+              <span class="toggle-icon">></span>
+            </div>
+            <div class="role-content" id="${roleId}-content"></div>
+          </div>
+        `);
+
+        const roleContent = roleSection.find(".role-content");
+
+        for (let i = 1; i <= count; i++) {
+          const fullType = count > 1 ? `${type}${i}` : type;
+          const stored =
+            localStorage.getItem(`author-name-${fullType}`) || "nama pengguna";
+
+          const item = $(`
+            <div class="general-chat-config-item">
+              <p>${type} ${count > 1 ? i : ""}</p>
+              <div class="author-name" author-type="${fullType}">${stored}</div>
+              <input type="text" id="input-${fullType}" placeholder="${type}..." value="${
+            stored !== "nama pengguna" ? stored : ""
+          }" />
+            </div>
+          `);
+
+          roleContent.append(item);
+        }
+
+        groupContent.append(roleSection);
+      }
+
+      container.append(group);
+    }
+
+    // Toggle for group level
+    $(".group-header").on("click", function () {
+      const $target = $($(this).data("target"));
+      $target.slideToggle();
+      $(this)
+        .find(".toggle-icon")
+        .text($target.is(":visible") ? ">" : "▶");
+    });
+
+    // Toggle for role level
+    $(".role-header").on("click", function () {
+      const $target = $($(this).data("target"));
+      $target.slideToggle();
+      $(this)
+        .find(".toggle-icon")
+        .text($target.is(":visible") ? ">" : "▶");
+    });
+  }
+
+  function initConfigHandlers() {
+    $("#save-btn").on("click", function () {
+      for (const roles of Object.values(configGroups)) {
+        for (const [type, count] of Object.entries(roles)) {
+          for (let i = 1; i <= count; i++) {
+            const fullType = count > 1 ? `${type}${i}` : type;
+            const value = $(`#input-${fullType}`).val().trim();
+            if (value) {
+              localStorage.setItem(`author-name-${fullType}`, value);
+            }
+          }
+        }
+      }
+      updateAuthorNames();
+      location.reload();
+    });
+
+    $("#reset-btn").on("click", function () {
+      for (const roles of Object.values(configGroups)) {
+        for (const [type, count] of Object.entries(roles)) {
+          for (let i = 1; i <= count; i++) {
+            const fullType = count > 1 ? `${type}${i}` : type;
+            localStorage.removeItem(`author-name-${fullType}`);
+          }
+        }
+      }
+      updateAuthorNames();
+      $(".group-content input").val("");
+      $(".author-name").text("nama pengguna");
+      location.reload();
+    });
+  }
+
+  function updateAuthorNames() {
+    $(".author-name").each(function () {
+      const type = $(this).attr("author-type");
+      const stored = localStorage.getItem(`author-name-${type}`);
+      $(this).text(stored || "nama pengguna");
+    });
+  }
+
+  // Import JSON template to local storage so you can have your own configuration and you don't need to insert value manualy
+  // function importFromJSON(json) {
+  //   const flatFromJSON = flattenJSON(json); // Flatten nested keys
+
+  //   for (const [key, value] of Object.entries(flatFromJSON)) {
+  //     localStorage.setItem(key, value); // Overwrite or add
+  //   }
+
+  //   alert("Import complete!");
+  //   location.reload(); // Reload the page to reflect changes
+  // }
+
+  // function flattenJSON(obj, result = {}) {
+  //   for (const key in obj) {
+  //     const value = obj[key];
+  //     if (typeof value === "object" && !Array.isArray(value)) {
+  //       flattenJSON(value, result); // Recursive flatten
+  //     } else {
+  //       result[key] = value; // Add flattened key
+  //     }
+  //   }
+  //   return result;
+  // }
+
+  // // UI logic to trigger import
+  // $("#import-button").on("click", function () {
+  //   const input = $("#import-json").val();
+  //   try {
+  //     const parsed = JSON.parse(input);
+  //     importFromJSON(parsed);
+  //   } catch (err) {
+  //     alert("Invalid JSON format!");
+  //   }
+  // });
 });

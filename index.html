@@ -44,7 +44,7 @@
       body {
         color: #000;
         padding: 0 !important;
-        background: #0c070e;
+        background: #252432;
         margin: 0;
         overflow-y: scroll;
         overflow: hidden;
@@ -133,6 +133,7 @@
         display: none;
         flex-direction: column !important;
       }
+
       #custom-css-input {
         background-color: #3d4455;
         color: white;
@@ -195,21 +196,11 @@
       <textarea id="css-editor"></textarea>
       <button id="apply-css-btn">Apply CSS</button>
     </div>
+
     <style id="custom-style-output"></style>
   </body>
-
   <script>
-    /*************  ✨ Codeium Command ⭐  *************/
-    /**
-     * Toggle the display of the buttons with the class "toggle-buttons"
-     * that are next element siblings of the button with the given id.
-     * All other buttons with the class "toggle-buttons" will be hidden.
-     * @param {string} buttonId The id of the button.
-     */
-
-    /******  072af91a-fd57-42d4-a161-c601a63d89a4  *******/ function toggleButtons(
-      buttonId
-    ) {
+    function toggleButtons(buttonId) {
       var button = document.getElementById(buttonId);
       var toggleButtons = button.nextElementSibling;
       toggleButtons.style.display =
@@ -288,5 +279,42 @@
         },
       }
     );
+
+    function flattenJSON(obj, prefix = "", result = {}) {
+      for (const key in obj) {
+        const value = obj[key];
+        const prefixedKey = prefix ? `${prefix}${key}` : key;
+
+        if (
+          typeof value === "object" &&
+          value !== null &&
+          !Array.isArray(value)
+        ) {
+          flattenJSON(value, "", result);
+        } else {
+          result[prefixedKey] = value;
+        }
+      }
+      return result;
+    }
+
+    function handleImport() {
+      try {
+        const rawInput = document.getElementById("jsonInput").value;
+        const parsedJSON = JSON.parse(rawInput);
+
+        const flatJSON = flattenJSON(parsedJSON);
+
+        for (const [key, value] of Object.entries(flatJSON)) {
+          localStorage.setItem(key, value);
+        }
+
+        alert("✅ JSON imported successfully!");
+        location.reload();
+      } catch (err) {
+        alert("❌ Failed to import JSON. Please check formatting.");
+        console.error(err);
+      }
+    }
   </script>
 </html>

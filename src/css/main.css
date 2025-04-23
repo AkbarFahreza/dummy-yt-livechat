@@ -1,8 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 :root {
   --main: #8558ff;
   --main2: #552ac9;
   --secondary: #ff40b3;
   --secondary2: #880353;
+  --dismiss: #ff4161;
+  --dark: #282a39;
+
+  --fontFams: "Poppins", sans-serif;
 }
 
 #buttons {
@@ -10,22 +15,31 @@
   flex-direction: row;
 }
 
+.dismiss-btn,
 .btn {
   border: none !important;
-  padding: 7PX 10px;
+  padding: 7px 10px;
   color: #fff;
   border-radius: 4px 0px 0px 4px;
   background-color: var(--main);
+  cursor: pointer;
+  font-family: var(--fontFams) !important;
+}
+.dismiss-btn {
+  background-color: var(--dismiss);
 }
 
+.dismiss-btn:hover,
 .btn:hover {
-  background-color: var(--main2);
+  opacity: 80%;
+  transition: all 0.2s ease-in-out;
 }
 
 .btnOnSC,
 .btnOn {
   border: none !important;
   color: #fff;
+  padding: 7px 10px;
   border-radius: 4px;
   background-color: var(--secondary);
   height: 100%;
@@ -90,4 +104,106 @@
 
 #timestamp {
   display: none !important;
+}
+
+/* Configuration style */
+
+#config-panel {
+  display: none;
+  flex-direction: column !important;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 1000;
+  background: #282a39;
+  border: 3px solid #8387a5;
+  border-radius: 8px;
+  max-height: 100vh;
+  min-width: 400px;
+  overflow-y: scroll;
+}
+#config-panel * {
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+}
+#config-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+}
+
+.general-chat-config-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.general-chat-config-item {
+  display: flex;
+  flex-direction: column;
+  padding: 7px 15px;
+  gap: 5px;
+}
+.general-chat-config-item .author-name {
+  font-size: 12px;
+}
+.general-chat-config-item p {
+  margin-left: -10px;
+  font-size: 15px;
+  font-weight: 700 !important;
+}
+#config-btn button {
+  border-radius: 4px !important;
+}
+#config-btn {
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+}
+
+#config-panel #jsoninput,
+#config-panel input {
+  border-radius: 4px !important;
+  padding: 0px 10px !important;
+  color: var(--dark) !important;
+}
+.group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 10px;
+  background: var(--main);
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.group-content {
+  display: none;
+  padding-left: 10px;
+  margin-top: 5px;
+}
+
+.role-header {
+  margin-left: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px;
+  border-radius: 5px;
+  margin-top: 6px;
+}
+
+.role-content {
+  display: none;
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+.role-header .toggle-icon {
+  transform: translateX(-30px);
 }
