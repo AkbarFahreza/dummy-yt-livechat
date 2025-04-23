@@ -24,7 +24,8 @@ This is a JSON template for configurating Author name on Youtube chat dummy/test
     "viewer": {
       "author-name-viewer1": "Dekreza",
       "author-name-viewer2": "Dekreza2",
-      "author-name-viewer3": "Dekreza3"
+      "author-name-viewer3": "Dekreza3",
+      "author-name-viewer4": "Dekreza4"
     },
     "moderator": {
       "author-name-moderator1": "Dekreza Mod",
@@ -67,6 +68,7 @@ example :
      "author-name-viewer1": "Dekreza",
      "author-name-viewer2": "Dekreza2",
      "author-name-viewer3": "Dekreza3"
+     "author-name-viewer4": "Dekreza4"
 ```
 
 ```json
@@ -76,6 +78,7 @@ example :
       "author-name-viewer1": "Asep Yukimura",
       "author-name-viewer2": "Asep Yukimura masak",
       "author-name-viewer3": "Dekreza3"
+      "author-name-viewer4": "Dekreza4"
 ```
 
 # Tools That I Use
