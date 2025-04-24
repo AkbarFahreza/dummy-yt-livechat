@@ -424,6 +424,7 @@ $(document).ready(function () {
               <button id="save-btn" class="btn">Save</button>
               <button id="reset-btn" class="btn dismiss-btn">Reset</button>
             </div>
+            <p style="color: red;">* This is a YouTube Live Chat CSS testing tool using dummy data. Not affiliated with YouTube.</p>
           </div>
         </div>
 
