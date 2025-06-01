@@ -385,7 +385,9 @@ $(document).ready(function () {
 
   function toggleEditor() {
     const $editor = $("#css-editor-wrapper");
+    const $chatPreview = $("yt-live-chat-app");
     $editor.css("display", $editor.css("display") === "none" ? "flex" : "none");
+    $chatPreview.css("width", $editor.css("width") === "100%" ? "40%" : "100%");
   }
   $("#toggle-editor").on("click", toggleEditor);
 
