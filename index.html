@@ -3,8 +3,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
     <meta http-equiv="Cache-control" content="no-cache" />
     <title>Reza | Youtube LIve Chat</title>
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" type="text/css" href="src/css/yt-original.css" />
     <link rel="stylesheet" type="text/css" href="src/css/main.css" />
+    <link rel="stylesheet" href="src/css/ctp-mocha.css" />
 
     <!-- Code mirror for css editor -->
     <!-- CodeMirror CSS -->
@@ -15,8 +18,9 @@
     <!-- Theme CSS (optional, choose your favorite theme) -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/material.min.css"
     />
+
     <!-- Linting CSS -->
     <link
       rel="stylesheet"
@@ -118,24 +122,9 @@
       a {
         color: inherit !important;
       }
-    </style>
-
-    <style>
-      .CodeMirror {
-        border: 1px solid #ccc;
-        height: calc(100vh - 35px);
-        max-height: 100vh;
-        width: 500px !important;
-        font-size: 14px !important;
-        flex-grow: 1 !important;
-      }
-      #css-editor-wrapper {
-        display: none;
-        flex-direction: column !important;
-      }
 
       #custom-css-input {
-        background-color: #3d4455;
+        background-color: var(--dark);
         color: white;
         flex-grow: 1;
         width: 100%;
@@ -146,13 +135,77 @@
       #apply-css-btn {
         width: 100%;
         padding: 10px;
-        background-color: #4caf50;
+        background-color: var(--main);
         color: white;
         border: none;
         cursor: pointer;
       }
       #custom-style-output {
         display: none;
+      }
+      body {
+        margin: 0;
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      yt-live-chat-app {
+        width: 100%;
+        min-width: 500px;
+        position: relative;
+      }
+
+      #css-editor-wrapper {
+        display: none;
+        flex-direction: column !important;
+      }
+
+      yt-live-chat-app::after {
+        content: "";
+        width: 10px;
+        height: 100%;
+        position: absolute;
+        right: -5px;
+        top: 0;
+        cursor: col-resize;
+      }
+      .CodeMirror-hints {
+        background-color: var(--dark);
+        font-family: monospace;
+        font-size: 14px;
+        color: #cdd6f4 !important;
+        max-height: 200px;
+        overflow-y: auto;
+        border-radius: 6px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        padding: 4px 0;
+        z-index: 10000;
+      }
+
+      .CodeMirror-hint {
+        padding: 4px 12px;
+        white-space: pre;
+        color: #cdd6f4 !important;
+      }
+
+      .CodeMirror-hint:hover {
+        background-color: #313244;
+        cursor: pointer;
+      }
+
+      .CodeMirror-hint-active {
+        background-color: #89b4fa;
+        color: #1e1e2e !important;
+      }
+      .CodeMirror {
+        border: 1px solid #ccc;
+        height: calc(100vh - 35px);
+        max-height: 100vh;
+        min-width: 500px !important;
+        font-size: 14px !important;
+        flex-grow: 1 !important;
+        min-height: 150px;
       }
     </style>
   </head>
@@ -193,7 +246,30 @@
       </yt-live-chat-renderer>
     </yt-live-chat-app>
     <div id="css-editor-wrapper">
-      <textarea id="css-editor"></textarea>
+      <textarea id="css-editor">
+      .updates-log {
+        /* v4.0.3 */
+        /* 01 June 2025 :
+              - Added resizable between preview and code editor
+              - Changed the editor theme to Cattpuccin Mocha
+              - Restyling autocomplete hints
+        */
+      }  
+      .disclaimer {
+        /* this is not afiliated with youtube */
+        /* this website purpose is to test your custom CSS for
+          youtube livechat */
+      }
+
+      .available-shortcut {
+         /* "Ctrl-Space": "auto complete", */
+         /* "Ctrl-F": "find text",  */
+         /* "Ctrl-/": "toggle Comment",  */
+      }
+
+      /* replace all these with your custom css  */
+      /* Click "Apply CSS" to apply  */
+      </textarea>
       <button id="apply-css-btn">Apply CSS</button>
     </div>
 
@@ -227,15 +303,50 @@
         try {
           // Apply the new CSS to the <style> element
           customStyleOutput.innerHTML = editorContent;
+          // Change the style of the btn for 2 seconds
+          this.style.backgroundColor = "#B9FFAF";
+          this.style.color = "#426B3D";
+          this.innerText = "Code applied";
+          setTimeout(() => {
+            this.style.backgroundColor = "";
+            this.style.color = "";
+            this.innerText = "Apply CSS";
+          }, 2000);
         } catch (error) {
           console.error("Error applying custom CSS:", error);
           alert("Invalid CSS. Please check your syntax.");
         }
       });
 
-    // code mirror adds on
+    const chatApp = document.querySelector("yt-live-chat-app");
+    const editorWrapper = document.getElementById("css-editor-wrapper");
 
-    // Initialize CodeMirror
+    let isDragging = false;
+
+    chatApp.addEventListener("mousedown", (e) => {
+      const bounds = chatApp.getBoundingClientRect();
+      // Allow resize only if dragging near right edge
+      if (e.clientX >= bounds.right - 10 && e.clientX <= bounds.right + 10) {
+        isDragging = true;
+        document.body.style.cursor = "col-resize";
+        e.preventDefault();
+      }
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+
+      const containerWidth = window.innerWidth;
+      const newWidth = (e.clientX / containerWidth) * 100;
+
+      chatApp.style.width = `${newWidth}%`;
+      editorWrapper.style.width = `${100 - newWidth}%`;
+    });
+
+    document.addEventListener("mouseup", () => {
+      isDragging = false;
+      document.body.style.cursor = "default";
+    });
   </script>
   <!-- CodeMirror JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
@@ -266,7 +377,7 @@
       {
         mode: "css", // Set the mode to CSS
         lineNumbers: true, // Show line numbers
-        theme: "monokai", // Set the theme (you can change this to 'default', 'material', etc.)
+        theme: "ctp-mocha", // Set cattpuccin mocha theme
         autoCloseBrackets: true, // Automatically close brackets
         matchBrackets: true, // Highlight matching brackets
         lineWrapping: true, // Enable line wrapping
@@ -280,34 +391,29 @@
       }
     );
 
-    function flattenJSON(obj, prefix = "", result = {}) {
-      for (const key in obj) {
-        const value = obj[key];
+    $.fn.flattenJSON = function (obj, prefix = "", result = {}) {
+      $.each(obj, function (key, value) {
         const prefixedKey = prefix ? `${prefix}${key}` : key;
 
-        if (
-          typeof value === "object" &&
-          value !== null &&
-          !Array.isArray(value)
-        ) {
-          flattenJSON(value, "", result);
+        if (typeof value === "object" && value !== null && !$.isArray(value)) {
+          $(this).flattenJSON(value, "", result);
         } else {
           result[prefixedKey] = value;
         }
-      }
+      });
       return result;
-    }
+    };
 
     function handleImport() {
       try {
-        const rawInput = document.getElementById("jsonInput").value;
+        const rawInput = $("#jsonInput").val();
         const parsedJSON = JSON.parse(rawInput);
 
         const flatJSON = flattenJSON(parsedJSON);
 
-        for (const [key, value] of Object.entries(flatJSON)) {
+        $.each(flatJSON, function (key, value) {
           localStorage.setItem(key, value);
-        }
+        });
 
         alert("✅ JSON imported successfully!");
         location.reload();
