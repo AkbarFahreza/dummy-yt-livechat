@@ -2,7 +2,8 @@
 
 # YouTube Livechat Dummmy Tester
 
-This is YouTube dummy chat to test your customize YouTube chat CSS for streaming purposes.
+This is YouTube dummy chat to test your customize YouTube chat CSS for streaming
+purposes.
 
 Go to : https://rzytblc.netlify.app/
 
@@ -16,7 +17,8 @@ Go to : https://rzytblc.netlify.app/
 
 # JSON Template
 
-This is a JSON template for configurating Author name on Youtube chat dummy/tester
+This is a JSON template for configurating Author name on Youtube chat
+dummy/tester
 
 ```json
 {
@@ -54,9 +56,7 @@ This is a JSON template for configurating Author name on Youtube chat dummy/test
 }
 ```
 
-you must only change the value
-<br/>
-example :
+you must only change the value <br/> example :
 
 - change author name viewer 1 value Dekreza into Asep Yukimura
 - change author name viewer 2 value Dekreza2 into Asep Yukimura masak
@@ -86,7 +86,8 @@ example :
 - Designing : [Figma](https://www.figma.com)
 - Coding : [VSCode](https://code.visualstudio.com/)
 - Convert PNG -> Base64 : [Base64-image](https://www.base64-image.de/)
-- Convert SVG -> Base64 : [yoksel.github.io/url-encoder](https://yoksel.github.io/url-encoder/)
+- Convert SVG -> Base64 :
+  [yoksel.github.io/url-encoder](https://yoksel.github.io/url-encoder/)
 
 # Youtube Chat custom CSS Tips & Tricks
 
@@ -162,8 +163,14 @@ yt-live-chat-membership-item-renderer:not([show-only-header]) #header-subtext {
 # Update Logs
 
 - _1 May 2024_ :
-  - **superchat** Removing "show-only-header" and "is-v2-style" attribute, adding like button on superchat.
+  - **superchat** Removing "show-only-header" and "is-v2-style" attribute,
+    adding like button on superchat.
 - _2 February 2025_ :
   - **Main page** Added CSS Editor for on-site editing.
 - _23 April 2025_ :
-  - **Main page** Added Author name configuration to personalize the preview test to your audience.
+  - **Main page** Added Author name configuration to personalize the preview
+    test to your audience.
+- _01 June 2025_ :
+  - Added resizable between preview and code editor
+  - Changed the editor theme to Cattpuccin Mocha
+  - Restyling autocomplete hints
